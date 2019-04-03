@@ -1,4 +1,4 @@
-kubectl apply -f controllers/phpapache-controllery.yaml
+kubectl apply -f controllers/phpapache-deployment.yaml
 kubectl apply -f phpapache-service.yaml
 
 vi kubernetes-dashboard-ingress-tls.yaml
