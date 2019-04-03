@@ -1,0 +1,12 @@
+kubectl apply -f controllers/phpapache-controllery.yaml
+kubectl apply -f phpapache-service.yaml
+
+vi kubernetes-dashboard-ingress-tls.yaml
+      rewrite ^(/phpapache)$ $1/ permanent;
+
+      - path: /phpapache/?(.*)
+        backend:
+          serviceName: php-apache-service
+          servicePort: 80
+
+kubectl apply -f kubernetes-dashboard-ingress-tls.yaml

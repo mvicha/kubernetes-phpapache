@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      rewrite ^(/phpapache)$ $1/ permanent;
+  name: phpapache-ingress
+  namespace: kube-system
+spec:
+  rules:
+  - host: kubemaster
+    http:
+      paths:
+      - path: /phpapache/?(.*)
+        backend:
+          serviceName: php-apache-service
+          servicePort: 80

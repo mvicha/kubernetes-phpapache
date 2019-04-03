@@ -1,0 +1,5 @@
+<?php
+  $VERSION="2.0";
+  echo "<br>HOSTNAME=".gethostname();
+  echo "<br>VERSION=".$VERSION;
+?>
